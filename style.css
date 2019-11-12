@@ -1,0 +1,511 @@
+/*color = #179340*/
+
+/*----------------------------------------------------*/
+/* BASIC SETUP*/
+/*----------------------------------------------------*/
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    color: #000;
+    background-color: #fdfdfd;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 22;
+    text-rendering: optimizeLegibility;   
+    overflow-x: hidden; /* look at word-doc- queries - when shorting the width of the browers, say to iphone the bottom scroll left to right appears,
+                            to make that disappear we use overflow-x */
+}
+
+.clearfix {zoom: 1}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/*-------------------------------------------------------------*/
+/*                       Resuable                              */
+/*-------------------------------------------------------------*/
+
+.row {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+section {
+    margin: 80px auto;
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #000;
+    word-spacing: 4px;
+    letter-spacing: 1px; 
+    font-weight: 600;
+}
+
+h2{
+    font-size: 250%;
+    margin: 30px auto;
+    text-align: center;    
+    letter-spacing: 8px;
+    text-transform: capitalize;
+}
+ 
+
+h2:after {   /* know */ 
+    display: block;
+    content: " "; 
+    background-color: #179340;
+    margin: 0 auto;
+    width: 100px;
+    height: 2px;  /* without this does not show */
+    margin-top: 30px;   
+}
+
+h3 {
+    margin:10px auto;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+h4 {
+    margin:10px auto;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 150%;
+}
+
+p{
+    line-height: 30px;
+    padding-top: 2%;
+}
+
+.box {
+    padding: 1%;
+}
+
+/*-------------------------------------------------------------*/
+/*                       heading-page                          */
+/*-------------------------------------------------------------*/
+.logo {
+    /*
+    float: left;
+    display: inline-block;
+    margin-top: 5px; /* -20px; and -10px 
+    margin-left: -10%;
+    width: auto; /* height 100px, width: auto,,,, or erase and above 
+    height: 60px;
+    
+    
+    original >>>>
+    float: left;
+    display: inline-block;
+    margin-top: -20px or 20%;
+    margin-left: -10%;
+ 
+    */
+    float: left;
+    display: inline-block;
+    margin-top: -20px;
+    margin-left: -10%;
+}
+
+.logo-black{
+    float: left;
+    width: auto; /* height 100px, width: auto,,,, or erase and above */
+    height: 75px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    display: none;
+}
+
+html, header {
+    height:100%;
+} 
+
+header {
+/*    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url(stock.jpg"); */
+    background-size: cover; /*!!!!!!!!!!!!!!!!know!!!!!!!!!!!!!!!!*/
+    height: 100vh; /*!!!!!!!!!!!!!!!!know!!!!!!!!!!!!!!!!*/
+    background-image:  url(img/stock.jpg);
+    background-attachment: fixed;
+    background-position: bottom;
+
+}
+.first-text-box {
+    width: 1140px;
+    position: absolute;
+    top: 50%;
+    left: 40%; /* why the fuck does changing this to 40% make the responsive query not work */
+    
+    -webkit-transform: translate(-50%, -50%);
+    
+    transform: translate(-50%, -50%);  /* try it without, to center it we do this. (a neat TRICK) */
+}
+
+/* MAIN-NAV */
+.head-nav {
+    float: right;
+    margin-top: 40px;
+}
+
+.head-nav li{
+    margin-right: 70px;
+    list-style: none;
+    color: #000;
+    font-size: 140%;
+    float:left;
+}
+
+.head-nav li:last-child {
+    margin-right: 0;
+}
+
+.head-nav li a:link, 
+.head-nav li a:visited {
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+}
+
+.head-nav li:hover,
+.head-nav li:active {
+    border-bottom: 2px solid #1ba248;
+    color: #000;
+    -webkit-transition: border-bottom 0.3s;
+    transition: border-bottom 0.3s;
+
+}
+
+/* STICKY NAV */
+.sticky {
+    position: fixed; /* fixed = navigation stays at the same spot in respect to scrolling */
+    top: 0;
+    left: 0;
+    width: 100%; /* we want this to start at the top right corner so we define that */
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-box-shadow: 0 2px 2px #d9d9d9;
+    box-shadow: 0 2px 2px #d9d9d9;
+    z-index: 9999;
+}
+
+.sticky .head-nav {
+    margin: 15px 0;
+}
+
+
+/* create 2 logos 1- black, 1- green */
+
+.sticky .logo-black {
+    display: block;   
+}
+
+.sticky .logo {
+    display: none;
+}
+
+/*-------------------------------------------------------*/
+/* Buttons*/
+/*-------------------------------------------------------*/
+.btn:link,
+.btn:visited,
+input[type=submit]{
+    text-decoration: none;   /* gets rid of the underline that comes with links */
+    text-transform: capitalize;
+    border: 1px solid #179340;
+    padding: 10px 25px;
+    border-radius: 200px; /* seems that PX works better % */
+    display: inline-block; /* btns are default- displayed as blocks, we want inline-blocks */
+    -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]{
+    color: #fff;
+    background-color: #179340;
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited{
+    color: #179340;
+}
+
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active{
+    background-color: #05812f;
+    border: 1px solid #05812f;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    color: #fff;
+}
+/*-------------------------------------------------------------*/
+/*                     Why us                                  */
+/*-------------------------------------------------------------*/
+
+.icon-big {
+    font-size: 600%;
+    color: #179340;
+    position: relative;
+    left: 70px;
+}
+
+/*-------------------------------------------------------------*/
+/*                     Table                                   */
+/*-------------------------------------------------------------*/
+
+table, th, td {
+    padding: 15px;
+    border: 1.5px solid #05792c;
+    border-collapse: collapse;
+}
+th {
+    text-align: left;
+    border-top: 1.5px solid #fff;
+    border-right: 1.5px solid #fff;
+    border-left: 1.5px solid #fff;
+    text-decoration: underline;
+    font-size: 120%;
+}
+
+th:first-child {
+    border-bottom: 1.5px solid #fff;
+}
+
+.company-names{
+    border-left: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    font-size: 110%;
+}
+
+td {
+    text-align: center;
+    font-weight: 400;
+}
+.compare-table {
+    margin-top: 2%;
+}
+
+.icon-small {
+    color: #179340; 
+}
+.icon-small-star {
+    color: #d1711f; 
+}
+.icon-small-x {
+    color: #f20f0f; 
+}
+
+/*-------------------------------------------------------------*/
+/*                     Platform                                */
+/*-------------------------------------------------------------*/
+
+.sub-title {
+    font-size: 24px;
+    margin: 30px auto 40px auto;
+}
+
+.platform-computer-picture {
+    width: 100%;
+}/* _____ */
+
+/*makes the image and the points look cleaner, and i fixed the icon and bullet point position by use of padding, i tried moving the text around but i couldn't get that to position nicely, so next step is to move the icon by use of Padding.*/
+
+.step-box:first-child{
+    text-align: left;
+    padding: 3%;
+}
+.step-box:last-child {
+    padding: 3%;
+}
+.steps{
+    margin-bottom: 2.5%;
+}
+.steps div{
+    font-size: 25px;
+    display: inline-block; 
+    float: left;
+    content: " ";
+    padding: 2.5%;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    color: #179340;
+}
+.platform-text{
+    font-size: 120%;
+    display: block;
+    padding: 10px;
+}
+  
+.mobile-sub-heading {
+    margin-top: 15%;
+}
+
+
+/*-------------------------------------------------------------*/
+/*                     form                                    */
+/*-------------------------------------------------------------*/
+
+form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 120%;
+}
+
+form .row {
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    padding: 7px;
+    width: 100%;
+}
+
+
+
+input[type="submit"] {
+    padding: 15px 25px;
+    margin: 0;
+}
+
+/* making the label exactly aligned to the input */
+
+/*-------------------------------------------------------------*/
+/*                     footer                                  */
+/*-------------------------------------------------------------*/
+
+footer {
+    background-color: rgba(245, 245, 245, 0.6);
+    padding: 16px 0;
+}
+
+.footer-nav {
+    list-style: none;
+    margin-right: 19px;
+}
+
+.social-nav {
+    list-style: none;
+    margin-left: 200px;
+
+}
+
+.footer-nav li,
+.social-nav li{
+    display: inline-block;
+    margin-right: 60px;
+    font-size: 130%;
+    margin-top: 10px;
+}
+
+.social-nav li {
+    font-size: 210%;
+    margin-right: 70px;
+}
+
+.footer-nav li:last-child,
+.social-nav li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited {
+    text-decoration: none;
+    color: #05792c;
+}
+
+.social-nav li a:link,
+.social-nav li a:visited{
+    text-decoration: none;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #000;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.ion-ion-social-facebook {
+    color: #3C5A99;
+}
+
+.ion-social-instagram {
+    color: #3f729b;
+}
+
+.ion-social-twitter {
+    color: #1DA1F2;
+}
+
+.ion-social-googleplus {
+    color: #DD4B39;
+} 
+
+.ion-social-facebook:hover,
+.ion-social-instagram:hover,
+.ion-social-twitter:hover,
+.ion-social-googleplus:hover {
+    color: #000;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+footer .row p {
+    padding-bottom: 10px;
+    text-align: center;
+    color: #363636;
+}
+
+/*-------------------------------------------------------------*/
+/*                     Animation                               */
+/*-------------------------------------------------------------*/
+
+.js--wp-1,
+.js--wp-3,
+.js--wp-4{
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js--wp-4 {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js--wp-1.animated,
+.js--wp-3.animated,
+.js--wp-4.animated {
+    opacity: 1;
+}
